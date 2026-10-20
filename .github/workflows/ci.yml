@@ -1,0 +1,108 @@
+name: CI
+
+# Every job builds from source and runs the same release gate, `make test`:
+# line-ending check, unit/golden/fuzz tests, CLI and dev-server tests (which
+# also compile every documentation example), and the VS Code extension tests
+# against the freshly built native compiler.
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  linux:
+    name: Linux (GCC, -Werror, sanitizers, analyzer)
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Build with warnings as errors
+        run: make CFLAGS="-O2 -g -Werror"
+
+      - name: Release gate (make test)
+        run: make test
+
+      - name: Compile every example and check the output files
+        run: |
+          make examples
+          for dir in examples/*/; do
+            test -s "$dir/dist/index.html" || { echo "missing $dir/dist/index.html"; exit 1; }
+            test -s "$dir/dist/style.css" || { echo "missing $dir/dist/style.css"; exit 1; }
+          done
+          test -s examples/showcase/dist/menu.html
+          test -s examples/showcase/dist/about.html
+          test -s examples/showcase/dist/assets/logo.svg
+
+      - name: C tests under AddressSanitizer and UBSan
+        run: make sanitize
+
+      - name: GCC static analyzer
+        run: make clean && make analyze
+
+      - name: Install into a staging prefix
+        run: |
+          make
+          make install PREFIX="$RUNNER_TEMP/genesis-prefix"
+          "$RUNNER_TEMP/genesis-prefix/bin/genesis" --version
+
+  macos:
+    name: macOS (Clang)
+    runs-on: macos-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Build
+        run: make CC=clang
+
+      - name: Release gate (make test)
+        run: make test CC=clang
+
+      - name: Compile every example
+        run: make examples CC=clang
+
+  windows:
+    name: Windows (MSYS2 UCRT64 GCC)
+    runs-on: windows-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        shell: msys2 {0}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - uses: msys2/setup-msys2@v2
+        with:
+          msystem: UCRT64
+          update: false
+          # Inherit the Windows PATH so the Node.js installed above is found.
+          path-type: inherit
+          install: >-
+            make
+            curl
+            mingw-w64-ucrt-x86_64-gcc
+
+      - name: Build with warnings as errors
+        run: make CFLAGS="-O2 -g -Werror"
+
+      - name: Release gate (make test)
+        run: make test
+
+      - name: Compile every example
+        run: make examples

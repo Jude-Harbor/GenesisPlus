@@ -1,0 +1,13 @@
+{
+  "iconDefinitions": {
+    "genesis-file": {
+      "iconPath": "./icons/genesis-file.svg"
+    }
+  },
+  "fileExtensions": {
+    "gns": "genesis-file"
+  },
+  "languageIds": {
+    "genesis": "genesis-file"
+  }
+}

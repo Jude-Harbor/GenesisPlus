@@ -1,0 +1,37 @@
+# A styled landing page: hero, feature cards, and a call to action.
+page Home title = "Lumen - Notes that think with you" background = "#faf8ff" {
+    column gap = 20 padding = 48 padding top = 64 background = "#1e1b4b" align = "center" {
+        text "NEW - Version 2 is here" size = 14 color = "#c4b5fd"
+        heading "Notes that think with you" color = "#ffffff" size = 52
+        text "Lumen turns scattered thoughts into clear plans. Capture an idea in seconds and find it again in one." color = "#e0e7ff" size = 19
+        row gap = 12 align = "center" {
+            button "Start for free" to = "#pricing" background = "#a78bfa" color = "#1e1b4b"
+            button "See how it works" to = "#features" background = "#312e81" color = "#ffffff"
+        }
+    }
+
+    heading "Why people switch to Lumen" level = 2 align = "center"
+
+    row gap = 20 {
+        column gap = 8 padding = 24 background = "#ffffff" {
+            heading "Instant capture" level = 3 color = "#4c1d95"
+            text "Press one shortcut from anywhere and start typing. Lumen saves as you go."
+        }
+        column gap = 8 padding = 24 background = "#ffffff" {
+            heading "Smart linking" level = 3 color = "#4c1d95"
+            text "Related notes connect themselves, so your ideas build on each other."
+        }
+        column gap = 8 padding = 24 background = "#ffffff" {
+            heading "Works offline" level = 3 color = "#4c1d95"
+            text "Everything stays on your device and syncs when you are back online."
+        }
+    }
+
+    column gap = 12 padding = 40 background = "#ede9fe" align = "center" {
+        heading "Ready to think clearly?" level = 2 color = "#3b0764"
+        text "Free for personal use. No credit card required."
+        button "Create your account" to = "#signup"
+    }
+
+    text "Lumen is a fictional product used to demonstrate Genesis+." size = 14 color = "#6b7280" align = "center"
+}

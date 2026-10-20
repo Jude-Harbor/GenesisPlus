@@ -1,0 +1,16 @@
+# Every element with default styling.
+page Home {
+    heading "Heading level 1"
+    heading "Heading level 3" level = 3
+    text "A paragraph of text."
+    link "A link" to = "about.html"
+    button "A button" to = "#start"
+    image "https://example.com/photo.jpg" alt = "A photo"
+    column {
+        text "Inside a column"
+    }
+    row {
+        text "Left"
+        text "Right"
+    }
+}

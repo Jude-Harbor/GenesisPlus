@@ -1,0 +1,30 @@
+# Rows stack vertically on screens narrower than 640 pixels.
+# Resize your browser window to see it happen.
+page Home title = "Responsive layout" {
+    heading "Responsive layout"
+    text "On a phone, every row below turns into a single column automatically."
+
+    row gap = 16 {
+        column width = 30% gap = 8 padding = 20 background = "#ecfeff" {
+            heading "Sidebar" level = 3
+            link "Getting started" to = "#start"
+            link "Guides" to = "#guides"
+            link "Reference" to = "#reference"
+        }
+        column width = 70% gap = 12 padding = 20 background = "#f8fafc" {
+            heading "Main content" level = 2
+            text "On a wide screen this column takes 70% of the row. On a narrow screen it takes the full width, below the sidebar."
+            row gap = 8 {
+                column padding = 12 background = "#e2e8f0" {
+                    text "Card A"
+                }
+                column padding = 12 background = "#e2e8f0" {
+                    text "Card B"
+                }
+                column padding = 12 background = "#e2e8f0" {
+                    text "Card C"
+                }
+            }
+        }
+    }
+}

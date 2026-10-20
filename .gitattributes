@@ -1,0 +1,20 @@
+# Line endings: every text file is stored and checked out with LF, on every
+# platform and regardless of the user's core.autocrlf setting. Shell scripts
+# and the Makefile break under Unix shells with CRLF, and golden files are
+# compared byte-for-byte. Windows editors (VS Code, Notepad, Visual Studio)
+# all handle LF files correctly.
+* text=auto eol=lf
+
+# Golden files must never be converted in any way.
+tests/golden/*.expected -text diff
+
+# Binary files.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.webp binary
+*.exe binary
+*.vsix binary
+*.zip binary

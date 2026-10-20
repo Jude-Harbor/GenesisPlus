@@ -1,0 +1,7 @@
+page Escaping title = "Tom & Jerry's <Show>" {
+    heading "<script>alert(\"hi\")</script>"
+    text "5 < 10 && 10 > 5 \\ backslash"
+    link "Query" to = "search.html?q=a&b='c'"
+    text "Café ☕ and 日本語 pass through unchanged."
+    image "assets/a&b.png" alt = "\"><img src=x onerror=alert(1)>"
+}

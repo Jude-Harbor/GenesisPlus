@@ -1,0 +1,137 @@
+{
+  "name": "genesis-plus",
+  "displayName": "Genesis+",
+  "description": "Language support for Genesis+, a simple language for building websites: highlighting, live error checking, completion, snippets, formatting, and build/dev commands.",
+  "version": "0.9.0",
+  "publisher": "judeharbor",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets",
+    "Formatters"
+  ],
+  "keywords": [
+    "genesis",
+    "gns",
+    "website",
+    "html",
+    "beginner"
+  ],
+  "icon": "icons/genesis-icon.png",
+  "main": "./extension.js",
+  "activationEvents": [
+    "onLanguage:genesis"
+  ],
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": "limited",
+      "description": "In untrusted folders, Genesis+ only runs a compiler from your PATH or from user settings, never one inside the folder.",
+      "restrictedConfigurations": [
+        "genesis.compilerPath"
+      ]
+    }
+  },
+  "contributes": {
+    "languages": [
+      {
+        "id": "genesis",
+        "aliases": [
+          "Genesis+",
+          "genesis"
+        ],
+        "extensions": [
+          ".gns"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./icons/genesis-file.svg",
+          "dark": "./icons/genesis-file.svg"
+        }
+      }
+    ],
+    "grammars": [
+      {
+        "language": "genesis",
+        "scopeName": "source.genesis",
+        "path": "./syntaxes/genesis.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "genesis",
+        "path": "./snippets/genesis.json"
+      }
+    ],
+    "iconThemes": [
+      {
+        "id": "genesis-icon-theme",
+        "label": "Genesis+ Icons",
+        "path": "./genesis-icon-theme.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "genesis.build",
+        "title": "Build Website",
+        "category": "Genesis+"
+      },
+      {
+        "command": "genesis.startDevServer",
+        "title": "Start Dev Server",
+        "category": "Genesis+"
+      },
+      {
+        "command": "genesis.stopDevServer",
+        "title": "Stop Dev Server",
+        "category": "Genesis+"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "genesis.build",
+          "when": "editorLangId == genesis"
+        },
+        {
+          "command": "genesis.startDevServer",
+          "when": "editorLangId == genesis"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Genesis+",
+      "properties": {
+        "genesis.compilerPath": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "Full path to the `genesis` compiler. When empty, the extension looks for `genesis.exe`/`genesis` in the workspace folder (trusted folders only), then on your `PATH`."
+        },
+        "genesis.diagnostics.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Check .gns files for errors while you type (uses the compiler)."
+        },
+        "genesis.devServer.port": {
+          "type": "integer",
+          "default": 3000,
+          "minimum": 1024,
+          "maximum": 65535,
+          "description": "Port used by the 'Genesis+: Start Dev Server' command."
+        }
+      }
+    },
+    "configurationDefaults": {
+      "[genesis]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4,
+        "editor.detectIndentation": false
+      }
+    }
+  },
+  "scripts": {
+    "test": "node --test \"test/*.test.js\""
+  }
+}

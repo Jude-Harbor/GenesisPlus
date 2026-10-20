@@ -1,0 +1,19 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Genesis+: build compiler",
+      "type": "shell",
+      "command": "make",
+      "group": { "kind": "build", "isDefault": true },
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "Genesis+: run all tests",
+      "type": "shell",
+      "command": "make test",
+      "group": "test",
+      "problemMatcher": ["$gcc"]
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Genesis+",
+  "scopeName": "source.genesis",
+  "patterns": [
+    { "include": "#comment" },
+    { "include": "#string" },
+    { "include": "#page-declaration" },
+    { "include": "#keyword" },
+    { "include": "#padding-side" },
+    { "include": "#property" },
+    { "include": "#number" },
+    { "include": "#punctuation" },
+    { "include": "#legacy-colon" }
+  ],
+  "repository": {
+    "comment": {
+      "name": "comment.line.number-sign.genesis",
+      "match": "#.*$"
+    },
+    "string": {
+      "name": "string.quoted.double.genesis",
+      "begin": "\"",
+      "beginCaptures": { "0": { "name": "punctuation.definition.string.begin.genesis" } },
+      "end": "\"|$",
+      "endCaptures": { "0": { "name": "punctuation.definition.string.end.genesis" } },
+      "patterns": [
+        {
+          "name": "constant.character.escape.genesis",
+          "match": "\\\\[\"\\\\]"
+        },
+        {
+          "name": "invalid.illegal.escape.genesis",
+          "match": "\\\\."
+        },
+        {
+          "name": "constant.other.color.genesis",
+          "match": "(?<=\")#(?:[0-9a-fA-F]{6}|[0-9a-fA-F]{3})(?=\")"
+        }
+      ]
+    },
+    "page-declaration": {
+      "match": "\\b(page)\\s+([A-Za-z_][A-Za-z0-9_]*)",
+      "captures": {
+        "1": { "name": "keyword.control.page.genesis" },
+        "2": { "name": "entity.name.type.page.genesis" }
+      }
+    },
+    "keyword": {
+      "patterns": [
+        {
+          "name": "keyword.control.layout.genesis",
+          "match": "\\b(column|row)\\b"
+        },
+        {
+          "name": "support.type.element.genesis",
+          "match": "\\b(heading|text|link|button|image)\\b"
+        },
+        {
+          "name": "keyword.control.page.genesis",
+          "match": "\\bpage\\b"
+        }
+      ]
+    },
+    "padding-side": {
+      "match": "\\b(padding)\\s+(top|bottom|left|right|inline|block)\\b",
+      "captures": {
+        "1": { "name": "variable.parameter.property.genesis" },
+        "2": { "name": "variable.parameter.property.side.genesis" }
+      }
+    },
+    "property": {
+      "name": "variable.parameter.property.genesis",
+      "match": "\\b(title|background|color|size|level|align|gap|width|padding|to|alt)\\b(?=\\s*=)"
+    },
+    "number": {
+      "patterns": [
+        {
+          "name": "constant.numeric.percentage.genesis",
+          "match": "\\b\\d+(?:\\.\\d+)?%"
+        },
+        {
+          "name": "constant.numeric.genesis",
+          "match": "\\b\\d+(?:\\.\\d+)?\\b"
+        }
+      ]
+    },
+    "punctuation": {
+      "patterns": [
+        { "name": "punctuation.section.block.begin.genesis", "match": "\\{" },
+        { "name": "punctuation.section.block.end.genesis", "match": "\\}" },
+        { "name": "keyword.operator.assignment.genesis", "match": "=" },
+        { "name": "punctuation.terminator.statement.genesis", "match": ";" }
+      ]
+    },
+    "legacy-colon": {
+      "name": "invalid.illegal.legacy-colon.genesis",
+      "match": ":"
+    }
+  }
+}

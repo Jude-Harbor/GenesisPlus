@@ -1,0 +1,12 @@
+# Specific padding always beats general padding, regardless of source order.
+page Padding {
+    column padding top = 4 padding = 24 {
+        text "top overrides general"
+    }
+    column padding inline = 8 padding left = 2 {
+        text "left overrides inline"
+    }
+    column padding right = 6 padding bottom = 7 padding block = 5 padding left = 1 padding top = 3 padding inline = 2 padding = 9 {
+        text "all seven"
+    }
+}

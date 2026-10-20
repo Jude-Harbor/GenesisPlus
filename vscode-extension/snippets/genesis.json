@@ -1,0 +1,66 @@
+{
+  "Page": {
+    "prefix": "page",
+    "description": "A new page with a heading and text",
+    "body": [
+      "page ${1:Home} title = \"${2:My website}\" {",
+      "\theading \"${3:Welcome}\"",
+      "\ttext \"${4:Hello there}\"",
+      "\t$0",
+      "}"
+    ]
+  },
+  "Column": {
+    "prefix": "column",
+    "description": "Stack items vertically",
+    "body": [
+      "column gap = ${1:16} {",
+      "\t$0",
+      "}"
+    ]
+  },
+  "Row": {
+    "prefix": "row",
+    "description": "Place items side by side",
+    "body": [
+      "row gap = ${1:16} {",
+      "\t$0",
+      "}"
+    ]
+  },
+  "Card": {
+    "prefix": "card",
+    "description": "A padded column with a background, heading and text",
+    "body": [
+      "column gap = 8 padding = ${1:24} background = \"#${2:f5f3ff}\" {",
+      "\theading \"${3:Title}\" level = ${4:3}",
+      "\ttext \"${5:Description}\"",
+      "}"
+    ]
+  },
+  "Heading": {
+    "prefix": "heading",
+    "description": "A heading",
+    "body": ["heading \"${1:Heading}\" level = ${2|1,2,3,4,5,6|}"]
+  },
+  "Text": {
+    "prefix": "text",
+    "description": "A paragraph of text",
+    "body": ["text \"${1:Some text}\""]
+  },
+  "Link": {
+    "prefix": "link",
+    "description": "A link to another page or address",
+    "body": ["link \"${1:About us}\" to = \"${2:about.html}\""]
+  },
+  "Button": {
+    "prefix": "button",
+    "description": "A link styled as a button",
+    "body": ["button \"${1:Get started}\" to = \"${2:#start}\""]
+  },
+  "Image": {
+    "prefix": "image",
+    "description": "An image from the assets folder",
+    "body": ["image \"assets/${1:photo.jpg}\" alt = \"${2:Description of the image}\""]
+  }
+}

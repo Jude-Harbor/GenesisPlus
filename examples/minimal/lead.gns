@@ -1,0 +1,5 @@
+# The smallest useful Genesis+ website.
+page Home {
+    heading "Hello, world!"
+    text "This page was built with Genesis+."
+}

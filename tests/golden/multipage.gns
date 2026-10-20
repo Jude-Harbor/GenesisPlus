@@ -1,0 +1,3 @@
+page Home{row{link "About" to="about.html" link "Contact" to="contact.html"}heading "Home"}
+page About title="About us"{text "About page"}
+page Contact{link "Email" to="mailto:hello@example.com" link "Call" to="tel:+15550100"}

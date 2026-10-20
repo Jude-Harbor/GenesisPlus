@@ -1,0 +1,31 @@
+# Gap controls space between children; padding controls space inside a block.
+# A more specific padding always wins over a general one, in any order.
+page Home title = "Spacing and padding" {
+    heading "Spacing and padding"
+
+    column gap = 0 padding = 16 background = "#f1f5f9" {
+        text "gap = 0: children touch."
+        text "Second line."
+    }
+
+    column gap = 24 padding = 16 background = "#f1f5f9" {
+        text "gap = 24: 24 pixels between children."
+        text "Second line."
+    }
+
+    column padding = 40 background = "#e0e7ff" {
+        text "padding = 40 on every side."
+    }
+
+    column padding = 40 padding top = 8 background = "#fae8ff" {
+        text "padding = 40, but padding top = 8 wins for the top edge."
+    }
+
+    column padding block = 32 padding inline = 8 background = "#dcfce7" {
+        text "padding block = 32 (top and bottom), padding inline = 8 (left and right)."
+    }
+
+    column padding left = 64 background = "#fef9c3" {
+        text "padding left = 64 only."
+    }
+}

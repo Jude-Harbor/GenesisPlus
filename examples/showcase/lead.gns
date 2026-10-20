@@ -1,0 +1,72 @@
+# A small multi-page website that uses every Genesis+ feature.
+# Pages: Home (index.html), Menu (menu.html), About (about.html).
+
+page Home title = "Harbor Bakery" background = "#fffbf5" color = "#292524" {
+    row gap = 16 align = "right" {
+        link "Home" to = "index.html"
+        link "Menu" to = "menu.html"
+        link "About" to = "about.html"
+    }
+
+    row gap = 32 padding = 40 background = "#7c2d12" {
+        column width = 60% gap = 16 {
+            text "Fresh every morning since 1998" size = 15 color = "#fed7aa"
+            heading "Bread worth waking up for" color = "#ffffff" size = 46
+            text "Sourdough, pastries, and coffee from a tiny bakery by the harbor." color = "#ffedd5" size = 19
+            row gap = 12 {
+                button "See the menu" to = "menu.html" background = "#fb923c" color = "#431407"
+                button "Visit us" to = "about.html" background = "#9a3412" color = "#ffffff"
+            }
+        }
+        column width = 40% align = "center" {
+            image "assets/logo.svg" alt = "Harbor Bakery logo" width = 60%
+        }
+    }
+
+    heading "Today's favourites" level = 2
+    row gap = 16 {
+        column gap = 6 padding = 20 background = "#ffedd5" {
+            heading "Country sourdough" level = 3
+            text "48-hour ferment, crackly crust."
+        }
+        column gap = 6 padding = 20 background = "#ffedd5" {
+            heading "Cardamom buns" level = 3
+            text "Swedish-style knots, baked at 7am."
+        }
+        column gap = 6 padding = 20 background = "#ffedd5" {
+            heading "Harbor espresso" level = 3
+            text "Roasted down the street."
+        }
+    }
+}
+
+page Menu title = "Menu - Harbor Bakery" background = "#fffbf5" color = "#292524" {
+    link "Back to home" to = "index.html"
+    heading "Menu"
+    column gap = 12 padding = 24 background = "#ffffff" {
+        heading "Breads" level = 2 size = 26
+        text "Country sourdough - $7"
+        text "Seeded rye - $8"
+        text "Baguette - $4"
+    }
+    column gap = 12 padding = 24 background = "#ffffff" {
+        heading "Pastries" level = 2 size = 26
+        text "Cardamom bun - $4.50"
+        text "Butter croissant - $4"
+        text "Fruit danish (seasonal) - $5"
+    }
+}
+
+page About title = "About - Harbor Bakery" background = "#fffbf5" color = "#292524" {
+    link "Back to home" to = "index.html"
+    heading "About us"
+    text "Harbor Bakery is a fictional bakery used to demonstrate Genesis+."
+    column gap = 8 padding = 24 padding left = 32 background = "#fef3c7" {
+        heading "Opening hours" level = 3
+        text "Tuesday to Sunday, 7am - 3pm"
+    }
+    row gap = 12 {
+        button "Email us" to = "mailto:hello@example.com"
+        button "Call us" to = "tel:+15550100" background = "#292524"
+    }
+}

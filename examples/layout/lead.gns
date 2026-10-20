@@ -1,0 +1,46 @@
+# Rows place items side by side; columns stack them. Both can be nested.
+page Home title = "Rows and columns" {
+    heading "Rows and columns"
+    text "A row shares its width equally between its children unless they have a width."
+
+    row gap = 16 {
+        column padding = 16 background = "#fee2e2" {
+            text "Row item 1"
+        }
+        column padding = 16 background = "#fef3c7" {
+            text "Row item 2"
+        }
+        column padding = 16 background = "#dcfce7" {
+            text "Row item 3"
+        }
+    }
+
+    heading "Explicit widths" level = 2
+    row gap = 16 {
+        column width = 25% padding = 16 background = "#e0f2fe" {
+            text "25% sidebar"
+        }
+        column width = 75% padding = 16 background = "#f3e8ff" {
+            text "75% main area"
+        }
+    }
+
+    heading "Nesting" level = 2
+    row gap = 16 {
+        column gap = 8 padding = 16 background = "#f1f5f9" {
+            heading "Left column" level = 3
+            text "A column inside a row."
+        }
+        column gap = 8 padding = 16 background = "#f1f5f9" {
+            heading "Right column" level = 3
+            row gap = 8 {
+                column padding = 8 background = "#cbd5e1" {
+                    text "A row"
+                }
+                column padding = 8 background = "#cbd5e1" {
+                    text "inside a column"
+                }
+            }
+        }
+    }
+}

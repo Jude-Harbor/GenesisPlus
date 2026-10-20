@@ -1,0 +1,7 @@
+page Home {
+    column {
+        heading "Welcome!" size = 36 color = "#7c3aed"
+        text "This is styled text." size = 18 color = "#ffffff"
+        text "This text uses default styling."
+    }
+}

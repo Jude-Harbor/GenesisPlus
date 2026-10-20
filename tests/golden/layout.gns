@@ -1,0 +1,14 @@
+page Layout title = "Layout test" background = "#fafafa" color = "#111827" {
+    row gap = 24 align = "center" {
+        column width = 33.33% background = "#ede9fe" padding = 16 {
+            heading "One" level = 2 size = 28 color = "#5b21b6"
+        }
+        column width = 66.67% align = "right" {
+            text "Two" size = 18 align = "left"
+            button "Go" to = "https://example.com" background = "#111827" color = "#ffffff"
+        }
+    }
+    column gap = 0 align = "center" {
+        image "https://example.com/logo.png" alt = "Logo" width = 25%
+    }
+}

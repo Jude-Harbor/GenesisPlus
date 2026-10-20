@@ -1,0 +1,26 @@
+# Compiler binaries and build output
+/genesis
+/genesis.exe
+/build/
+*.o
+*.obj
+*.exe
+*.genesis-tmp
+
+# Generated websites
+dist/
+
+# VS Code extension packages and dependencies
+*.vsix
+node_modules/
+
+# Editor and OS noise
+.vscode/*
+!.vscode/launch.json
+!.vscode/tasks.json
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
