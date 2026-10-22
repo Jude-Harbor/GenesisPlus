@@ -71,7 +71,7 @@ $(TEST_TARGET): $(CORE_OBJECTS) $(TEST_SOURCES) tests/unit/test.h
 
 # Absolute path of the freshly built native compiler, passed to the
 # extension tests so they never pick up another binary.
-GENESIS_BIN_PATH = $(abspath $(TARGET))
+GENESIS_BIN_PATH = $(shell cygpath -am "$(abspath $(TARGET))")
 NODE := $(shell command -v node 2>/dev/null)
 
 test: check-eol test-unit test-cli test-extension
@@ -89,7 +89,7 @@ test-extension: $(TARGET)
 ifeq ($(NODE),)
 	@echo "test-extension: SKIPPED (Node.js not found; install Node.js 18+ to run it)"
 else
-	cd vscode-extension && GENESIS_BIN="$(GENESIS_BIN_PATH)" node --test "test/*.test.js"
+	cd vscode-extension && GENESIS_BIN="$(GENESIS_BIN_PATH)" node --test test/*.test.js
 endif
 
 examples: $(TARGET)
