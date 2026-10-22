@@ -661,7 +661,7 @@ static socket_t open_listener(int port)
     memset(&address, 0, sizeof(address));
     address.sin_family = AF_INET;
     address.sin_port = htons((unsigned short)port);
-    address.sin_addr.s_addr = htonl(INADDR_LOOPBACK); /* localhost only */
+    address.sin_addr.s_addr = htonl(0x7f000001UL); /* localhost only */
 
     if (bind(listener, (struct sockaddr *)&address, sizeof(address)) != 0) {
         if (last_socket_error_is_in_use()) {
